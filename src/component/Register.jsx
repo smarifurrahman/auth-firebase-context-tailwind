@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProviders';
 
 const Register = () => {
-    const { user } = useContext(AuthContext);
-    console.log(user)
+    const { user, createUser } = useContext(AuthContext);
 
     const handleRegister = event => {
         event.preventDefault();
@@ -14,6 +13,16 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, email, password);
+
+        createUser(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                form.reset();
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (
@@ -43,7 +52,7 @@ const Register = () => {
                             <input type="password" name='password' required placeholder="password" className="input input-bordered" />
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn btn-primary">Register</button>
                         </div>
                         <Link to="/login" className="label-text-alt link link-hover">Already have an account?</Link>
                     </form>
