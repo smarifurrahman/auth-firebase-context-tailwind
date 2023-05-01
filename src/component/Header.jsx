@@ -20,6 +20,8 @@ const Header = () => {
             <div className="navbar bg-primary text-primary-content">
                 <a className="btn btn-ghost normal-case text-xl">Auth Master</a>
                 <Link to="/" className="btn btn-ghost normal-case text-lg">Home</Link>
+                <Link to="/orders" className="btn btn-ghost normal-case text-lg">Orders</Link>
+                {user && <Link to="/profile" className="btn btn-ghost normal-case text-lg">Profile</Link>}
                 <Link to="/login" className="btn btn-ghost normal-case text-lg">Login</Link>
                 <Link to="/register" className="btn btn-ghost normal-case text-lg">Register</Link>
                 {
